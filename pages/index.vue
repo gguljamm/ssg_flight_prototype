@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import MobileMain from '~/components/MobileMain.vue'
+import MobileMain from '~/components/MobileMain.vue';
 
 export default {
   components: {
