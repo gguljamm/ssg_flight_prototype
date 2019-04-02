@@ -61,6 +61,20 @@ module.exports = {
         path: '/result/:popup?',
         component: resolve(__dirname, 'components/popup.vue'),
       });
+      parent = routes.find(route => route.path === '/book')
+      parent.children = [];
+      parent.children.push({
+        name: 'book-modal',
+        path: '/book/:popup?',
+        component: resolve(__dirname, 'components/popup.vue'),
+      });
+      parent = routes.find(route => route.path === '/cart')
+      parent.children = [];
+      parent.children.push({
+        name: 'cart-modal',
+        path: '/cart/:popup?',
+        component: resolve(__dirname, 'components/popup.vue'),
+      });
     }
   },
 }

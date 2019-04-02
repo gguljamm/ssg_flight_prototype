@@ -1,7 +1,11 @@
 <template>
   <transition name="slide-bottom-fade" mode="out-in">
     <div class="bpPopWrap" v-if="init">
-      <div class="header"><button @click="$router.back()"></button>{{ title }}</div>
+      <div class="header">
+        <button v-show="$route.params.popup !== 'detail'" @click="$router.back()"></button>
+        {{ title }}
+        <button v-show="$route.params.popup === 'detail'" @click="$router.back()"></button>
+      </div>
       <popup-date
         v-if="$route.params.popup === 'departure' || $route.params.popup === 'arrival'"
         :inputData="inputData"
@@ -10,6 +14,12 @@
       <popup-place
         v-else-if="$route.params.popup === 'origin' || $route.params.popup === 'destination'"
       ></popup-place>
+      <div
+        class="scrollContainer"
+        v-else-if="$route.params.popup === 'detail'"
+      >
+        <popup-result-detail></popup-result-detail>
+      </div>
     </div>
   </transition>
 </template>
@@ -17,6 +27,7 @@
 <script>
 import PopupDate from './date';
 import PopupPlace from './place';
+import PopupResultDetail from './resultDetail';
 import Format from '~/utils/format'; // eslint-disable-line
 
 export default {
@@ -24,6 +35,7 @@ export default {
   components: {
     PopupDate,
     PopupPlace,
+    PopupResultDetail,
   },
   data() {
     const today = new Date();
@@ -44,6 +56,8 @@ export default {
         return '여행날짜';
       } else if (this.$route.params.popup === 'option') {
         return '검색 조건'
+      } else if (this.$route.params.popup === 'detail') {
+        return '항공권 상세정보';
       }
       return '';
     },
@@ -92,7 +106,7 @@ export default {
       position: absolute;
       background-color: #FFF;
       z-index: 10;
-      > button{
+      > button:first-of-type{
         position: absolute;
         left: 0;
         top: 0;
@@ -108,6 +122,48 @@ export default {
           vertical-align: middle;
         }
       }
+      > button:nth-of-type(2){
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 44px;
+        width: 44px;
+        &:after{
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 1px;
+          height: 22px;
+          margin-top: -11px;
+          background-color: #252524;
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+        &:before{
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 1px;
+          height: 22px;
+          margin-top: -11px;
+          background-color: #252524;
+          -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+        }
+      }
+    }
+    .scrollContainer{
+      top: 44px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      background-color: #f2f2f2;
+      position: absolute;
     }
   }
 </style>
