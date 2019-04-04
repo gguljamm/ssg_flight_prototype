@@ -55,7 +55,7 @@
                     </div>
                     <div>
                       <button>1:1 문의</button>
-                      <button>결제하기</button>
+                      <button @click="$router.push('/payment')">결제하기</button>
                     </div>
                   </div>
                 </div>
@@ -92,7 +92,7 @@
 </template>
 
 <script>
-  import Header from '~/components/header';
+  import Header from '~/components/Header';
   import SidePopUp from '~/components/SidePopUp.vue';
   import PopWrapper from '~/components/popWrapper';
 

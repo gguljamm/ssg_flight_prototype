@@ -35,7 +35,7 @@
       </div>
       <h3>이용약관</h3>
       <div>
-        <button></button>
+        <button @click="isConfirm = !isConfirm" :class="isConfirm ? 'check' : ''"></button>
         다음 약관 내용에 모두 동의합니다. <a href="#">항공권 예약 이용약관</a>
       </div>
     </div>
@@ -52,6 +52,11 @@
   export default {
     components: {
       PopWrapper,
+    },
+    data() {
+      return {
+        isConfirm: false,
+      };
     },
   };
 </script>
@@ -295,6 +300,7 @@
           border-bottom: 1px solid #f2f2f2;
           height: 48px;
           > input{
+            border: 0;
             height: 48px;
             width: 100%;
           }
@@ -311,6 +317,16 @@
           height: 13px;
           border-radius: 2px;
           border: solid 1px #13b1fa;
+          &.check{
+            &:before{
+              content: '';
+              background: url(~assets/check.png) center center no-repeat;
+              background-size: contain;
+              display: block;
+              width: 11px;
+              height: 11px;
+            }
+          }
         }
         font-size: 14px;
         background-color: #FFF;

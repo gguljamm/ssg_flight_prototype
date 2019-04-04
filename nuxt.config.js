@@ -22,6 +22,7 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/nuxt-swiper-plugin.js', ssr: false },
+    { src: '~/plugins/nuxt-sliderComponent-plugin.js', ssr: false },
   ],
   css: ['~/assets/layout.css', '~/assets/normalize.css', 'node_modules/swiper/dist/css/swiper.css'],
   build: {

@@ -49,7 +49,7 @@
           </div>
         </li>
       </ul>
-      <button class="btnFilter">필터</button>
+      <button class="btnFilter" @click="$router.push({params: {popup: 'filter'}})">필터</button>
     </div>
     <transition name="fade">
       <div class="popupResult" v-if="$route.params.popup === 'book'">
@@ -57,15 +57,18 @@
         <result-popup></result-popup>
       </div>
     </transition>
+    <pop-wrapper v-if="$route.params.popup === 'filter'"></pop-wrapper>
   </div>
 </template>
 
 <script>
   import ResultPopup from './resultPopup';
+  import PopWrapper from './popWrapper';
 
   export default {
     components: {
       ResultPopup,
+      PopWrapper,
     },
     data() {
       return {

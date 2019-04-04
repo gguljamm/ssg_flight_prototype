@@ -46,7 +46,7 @@
             >검색</button>
           </div>
         </div>
-        <div>
+        <div @click="$router.push({ params: { popup: 'every' } })">
           <div></div>
           <div>어디든 떠나볼까요?</div>
           <div>예산에 맞는 항공권을 찾아드립니다.</div>

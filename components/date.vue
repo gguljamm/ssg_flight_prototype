@@ -31,7 +31,30 @@
           >
             <div>{{ day.date === 0 ? '&nbsp;' : day.date }}</div>
             <div></div>
+            <div v-if="!deptDate && day.date !== 0 && (parseInt(`${list.month}${format.zeros(day.date)}`) >= todayNumber)"
+              v-show="Math.random() > 0.25"
+              :class="{
+                lowPrice: Math.random() > 0.5,
+                highPrice: Math.random() > 0.75,
+              }"
+            >21만원</div>
+            <div v-else-if="deptDate && !retnDate && day.date !== 0 && (parseInt(`${list.month}${format.zeros(day.date)}`) > parseInt(deptDate.replace(/-/g, '')))"
+              v-show="Math.random() > 0.25"
+              :class="{
+                lowPrice: Math.random() > 0.5,
+                highPrice: Math.random() > 0.75,
+              }"
+            >45만원</div>
           </a>
+        </div>
+      </div>
+    </div>
+    <div v-if="!(deptDate && retnDate)" class="notification">
+      <div>
+        <div>
+          <div>최저</div>
+          <div>평균</div>
+          <div>최고</div>
         </div>
       </div>
     </div>
@@ -83,6 +106,7 @@
         scrollDate: '',
         wishCities: arrWish,
         startCity,
+        todayNumber: parseInt(todayString.replace(/-/g, '')),
       };
     },
     methods: {
@@ -279,6 +303,9 @@
           &.lowPrice{
             color: #02d273;
           }
+          &.highPrice{
+            color: #d0021b;
+          }
         }
         &.start > div:nth-of-type(3) {
           display: none;
@@ -433,6 +460,46 @@
       line-height: 47px;
       border: 0;
       cursor: pointer;
+    }
+  }
+  .notification{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 27px;
+    line-height: 27px;
+    background-color: #FFF;
+    z-index: 11;
+    padding: 0 10px;
+    > div{
+      border-top: 1px solid #dfdfdf;
+      padding: 0 40px;
+      > div{
+        display: flex;
+        > div{
+          flex: 0 0 33.33%;
+          text-align: center;
+          font-size: 10px;
+          &:before{
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            margin-right: 4px;
+            border-radius: 100%;
+          }
+        }
+        > div:nth-of-type(1):before{
+          background-color: #07c98f;
+        }
+        > div:nth-of-type(2):before{
+          background-color: #d8d8d8;
+        }
+        > div:nth-of-type(3):before{
+          background-color: #d0021b;
+        }
+      }
     }
   }
 </style>

@@ -53,6 +53,9 @@ html {
 :focus{
   outline: none;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 .button--green {
   display: inline-block;
   border-radius: 4px;

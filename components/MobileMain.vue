@@ -78,7 +78,7 @@
             <div>
               <h2>ForYou_브랜드</h2>
               <div>
-                <img :src="require('~/assets/promo.png')">
+                <img :src="require('~/assets/promo.jpg')">
               </div>
             </div>
           </div>

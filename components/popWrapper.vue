@@ -16,9 +16,12 @@
       ></popup-place>
       <div
         class="scrollContainer"
-        v-else-if="$route.params.popup === 'detail'"
+        v-else-if="$route.params.popup"
       >
-        <popup-result-detail></popup-result-detail>
+        <popup-result-detail v-if="$route.params.popup === 'detail'"></popup-result-detail>
+        <popup-every v-else-if="$route.params.popup === 'every'"></popup-every>
+        <popup-filter v-else-if="$route.params.popup === 'filter'"></popup-filter>
+        <popup-option v-else-if="$route.params.popup === 'option'"></popup-option>
       </div>
     </div>
   </transition>
@@ -28,6 +31,9 @@
 import PopupDate from './date';
 import PopupPlace from './place';
 import PopupResultDetail from './resultDetail';
+import PopupEvery from './every';
+import PopupFilter from './filter';
+import PopupOption from './option';
 import Format from '~/utils/format'; // eslint-disable-line
 
 export default {
@@ -36,6 +42,9 @@ export default {
     PopupDate,
     PopupPlace,
     PopupResultDetail,
+    PopupEvery,
+    PopupFilter,
+    PopupOption,
   },
   data() {
     const today = new Date();
@@ -58,6 +67,10 @@ export default {
         return '검색 조건'
       } else if (this.$route.params.popup === 'detail') {
         return '항공권 상세정보';
+      } else if (this.$route.params.popup === 'every') {
+        return '어디든';
+      } else if (this.$route.params.popup === 'filter') {
+        return '필터';
       }
       return '';
     },
