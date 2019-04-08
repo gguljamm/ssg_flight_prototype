@@ -36,7 +36,7 @@
                 <div>
                   <div>
                     <div>
-                      <span>예약번호</span> 1234-1234
+                      <span>예약번호</span> SSG_LOVE1004
                       <div>좌석확정</div>
                       <div>요금확정</div>
                     </div>
@@ -46,7 +46,7 @@
                       params: { popup: 'detail' },
                     })">
                       <div>인천(ICN) - 런던(LHR) | 3월 13일(목)</div>
-                      <div>런던(LHR) - 인천(ICN) | 3월 19일(수)</div>
+                      <div>런던(LHR) - 인천(ICㅁㄴㅇㅁㄴN) | 3월 19일(수)</div>
                       <div>에어프랑스 | 일반석 | 성인1명</div>
                     </div>
                     <div>
