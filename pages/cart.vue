@@ -46,7 +46,7 @@
                       params: { popup: 'detail' },
                     })">
                       <div>인천(ICN) - 런던(LHR) | 3월 13일(목)</div>
-                      <div>런던(LHR) - 인천(ICㅁㄴㅇㅁㄴN) | 3월 19일(수)</div>
+                      <div>런던(LHR) - 인천(ICN) | 3월 19일(수)</div>
                       <div>에어프랑스 | 일반석 | 성인1명</div>
                     </div>
                     <div>
