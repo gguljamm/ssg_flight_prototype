@@ -4,4 +4,4 @@
 
 ## 테스트 사이트
 
-> https://ssg-flight.web.app
+> https://ssg-flight.web.app [모바일]
